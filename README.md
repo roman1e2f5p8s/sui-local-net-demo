@@ -1,10 +1,8 @@
 # sui-local-net-demo-1
-[sui-local-net-demo-1]() describes how to start a local [Sui](https://sui.io/) network using the [sui-test-validator](https://github.com/MystenLabs/sui/tree/main/crates/sui-test-validator) binary provided by Sui.
+[sui-local-net-demo-1](https://github.com/roman1e2f5p8s/sui-local-net-demo-1) describes how to start a local [Sui](https://sui.io/) network using the Sui-provided [sui-test-validator](https://github.com/MystenLabs/sui/tree/main/crates/sui-test-validator) binary, which starts a local network that includes a Sui Full node, a Sui validator, a Sui faucet and (optionally) an indexer. This demo is an extended version of the official Sui tutorial [Connect to a Local Network](https://docs.sui.io/guides/developer/getting-started/local-network).
 
-The [`sui-test-validator`](https://github.com/MystenLabs/sui/tree/main/crates/sui-test-validator) starts a local network that includes a Sui Full node, a Sui validator, a Sui faucet and (optionally) an indexer.
-
-
-1. [Install Sui](https://docs.sui.io/guides/developer/getting-started/sui-install):
+## Steps
+1. Update Rust and update/install Sui as described in [Sui Docs](https://docs.sui.io/guides/developer/getting-started/sui-install):
 ```bash
 rustup update stable
 cargo install --locked --git https://github.com/MystenLabs/sui.git --branch main sui
