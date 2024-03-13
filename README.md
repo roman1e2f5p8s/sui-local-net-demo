@@ -13,16 +13,18 @@ SUI_LOCAL_CONFIG_DIR=<some-directory>
 mkdir $SUI_LOCAL_CONFIG_DIR
 sui genesis -f --with-faucet --working-dir=$SUI_LOCAL_CONFIG_DIR
 ```
-3. Clone the Sui repo and build `sui-test-validator`:
+3. Clone the [Sui repo](https://github.com/MystenLabs/sui/tree/main) and build `sui-test-validator`:
 ```bash
-git clone https://github.com/MystenLabs/sui.git && cd sui
-cargo build --bin sui-test-validator
+git clone https://github.com/MystenLabs/sui.git
+cd sui && cargo build --bin sui-test-validator
 ```
 4. Start the local network:
 ```bash
-RUST_LOG="off,sui_node=info" ./target/debug/sui-test-validator --config-dir $SUI_LOCAL_CONFIG_DIR
+RUST_LOG="off,sui_node=info" \
+./target/debug/sui-test-validator --config-dir $SUI_LOCAL_CONFIG_DIR
 ```
-5. Verify that the local network is running using a simple request:
+5. Open another terminal window for the next steps.
+6. Verify that the local network is running using a simple request:
 ```bash
 curl --location --request POST 'http://127.0.0.1:9000' \
 --header 'Content-Type: application/json' \
@@ -33,13 +35,21 @@ curl --location --request POST 'http://127.0.0.1:9000' \
   "params": []
 }'
 ```
-6. Install Sui Explorer and Sui Wallet locally:
-    - Install [pnpm](https://pnpm.io/installation): `sudo npm install -g pnpm`
-    - In the `sui` root folder (step 3), install dependencies: `pnpm install`
-    - If the `EHOSTUNREACH` error appears, disable IPv6: `sudo sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1` and repeat `pnpm install`
-    - Install Sui Explorer and Sui Wallet: `pnpm turbo build`
-7. Start the explorer dev server: `pnpm explorer dev`
-8. Open the local Sui Explorer at the following URL: http://localhost:3000
+7. Navigate to the root folder of the `sui` repo cloned in step 3 to install Sui Explorer:
+```bash
+sudo npm install -g pnpm
+pnpm install
+pnpm turbo build
+```
+  - If the `EHOSTUNREACH` error appears, disable IPv6, and then repeat the intallation:
+    ```bash
+    sudo sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+    ```
+8. Start the explorer dev server:
+```bash
+pnpm explorer dev
+```
+8. Open the local Sui Explorer at the following URL: http://localhost:3000/
 
 ### Sources
 - [sui-test-validator | MystenLabs/Sui](https://github.com/MystenLabs/sui/tree/main/crates/sui-test-validator)
