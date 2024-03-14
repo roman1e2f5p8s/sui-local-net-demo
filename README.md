@@ -60,7 +60,7 @@ curl --location --request POST 'http://127.0.0.1:9000' \
 ---
 
 ## Method 1: Use `sui-test-validator`
-Sui-provides the [sui-test-validator](https://github.com/MystenLabs/sui/tree/main/crates/sui-test-validator) binary, which starts a local network that includes a Sui Full node, a Sui validator, a Sui faucet and (optionally) an indexer. This method is the simplest one and it is recommnded in the official Sui tutorial [Connect to a Local Network](https://docs.sui.io/guides/developer/getting-started/local-network).
+Sui-provides the [sui-test-validator](https://github.com/MystenLabs/sui/tree/main/crates/sui-test-validator) binary that starts a local network that includes a Sui Full node, a Sui validator, a Sui faucet and (optionally) an indexer. This method is the simplest one and it is recommnded in the official Sui tutorial [Connect to a Local Network](https://docs.sui.io/guides/developer/getting-started/local-network).
 
 Nativate to the root folder of the `sui` repo (cloned in step 3 of [Preliminary steps](#preliminary-steps)) and build `sui-test-validator`:
 ```bash
@@ -76,6 +76,23 @@ To start the local Sui network with a persisted state (make sure you completed s
 ```bash
 RUST_LOG="off,sui_node=info" \
 ./target/debug/sui-test-validator --config-dir $SUI_LOCAL_CONFIG_DIR
+```
+
+In another terminal window, verify that the local network is running as described in step 1 of [Closing steps](#closing-steps).
+
+On the local Sui explorer, observe that the local network is running es described in step 2 of [Closing steps](#closing-steps).
+
+---
+
+## Method 2: Use `sui start`
+`sui start` starts a local Sui network by running pre-generated genesis configs.
+
+Make sure you completed step 2 of [Preliminary steps](#preliminary-steps) as it is required to generate genesis configs in this method.
+
+Start the local Sui network using the following command:
+```bash
+RUST_LOG="off,sui_node=info" \
+sui start --network.config=$SUI_LOCAL_CONFIG_DIR/network.yaml
 ```
 
 In another terminal window, verify that the local network is running as described in step 1 of [Closing steps](#closing-steps).
