@@ -104,6 +104,9 @@ On the local Sui explorer, observe that the local network is running es describe
 ## Method 3: Use `sui genesis-ceremony`
 [sui genesis-ceremony](https://github.com/MystenLabs/sui/blob/main/crates/sui/genesis.md) orchestrates a Sui Genesis Ceremony.
 
+Steps 1-3, 10 should be performed only by the master of ceremony.
+Steps 2, 4-9, 11 should be performed by each participating validator.
+
 1. Create a new empty [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository) repo. Assume it is named `sui-genesis`.
 
 2. Clone the repo on a local machine and navigate to its root folder:
@@ -152,19 +155,44 @@ sui genesis-ceremony add-validator \
   --account-key-file val_0_account.key \
   --network-key-file val_0_network.key \
   --network-address /ip4/0.0.0.0/tcp/8080/http \
-  --p2p-address /ip4/0.0.0.0/tcp/8084/http \
-  --narwhal-primary-address /ip4/0.0.0.0/tcp/8081/http \
-  --narwhal-worker-address /ip4/0.0.0.0/tcp/8082/http \
+  --narwhal-primary-address /ip4/0.0.0.0/udp/8081/http \
+  --narwhal-worker-address /ip4/0.0.0.0/udp/8082/http \
+  --p2p-address /ip4/0.0.0.0/udp/8084/http \
   --description "Local Sui validator 0" \
   --image-url https://github.com/MystenLabs/sui/blob/main/docs/site/static/img/logo.svg \
   --project-url https://github.com/roman1e2f5p8s/sui-local-net-demo
 ```
+Information about addresses can be found in [Connectivity ports](https://github.com/MystenLabs/sui/blob/main/nre/sui_for_node_operators.md#connectivity).
 Values for arguments `image-url` and `project-url` can be specified as empty strings.
 
 9. Push the changes to the repo:
 ```bash
 git add .
 git commit -S -m "add validator-0 information"
+git push -u origin main
+```
+
+10. Once all validators have been added, the master of ceremony needs to build the genesis object and push the changes to the repo:
+```bash
+sui genesis-ceremony build-unsigned-checkpoint
+git add .
+git commit -S -m "build genesis"
+git push -u origin main
+```
+
+11. Each validator will then need to verify and sign genesis and push the changes to the repo:
+```bash
+sui genesis-ceremony verify-and-sign --key-file val_0.key
+git add .
+git commit -S -m "verify and sign genesis"
+git push -u origin main
+```
+
+12. Once all validators have successfully verified and signed genesis, the master of ceremony needs to finalize the ceremony and then the genesis state can be distributed:
+```bash
+sui genesis-ceremony finalize
+git add .
+git commit -S -m "finalize genesis"
 git push -u origin main
 ```
 
