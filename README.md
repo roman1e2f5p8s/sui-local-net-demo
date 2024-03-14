@@ -206,3 +206,4 @@ git push -u origin main
 - [Sui Indexer | Sui Docs](https://docs.sui.io/concepts/sui-architecture/indexer-functions#:~:text=Sui%20Indexer%20is%20an%20off,from%20chain%20and%20derivative%20data.)
 - [Genesis Ceremony | MystenLabs/Sui](https://github.com/MystenLabs/sui/blob/main/crates/sui/genesis.md)
 - [Sui for Node Operators | MystenLabs/Sui](https://github.com/MystenLabs/sui/blob/main/nre/sui_for_node_operators.md)
+- [Run a Sui Node using Systemd | MystenLabs/Sui](https://github.com/MystenLabs/sui/blob/main/nre/systemd/README.md)
