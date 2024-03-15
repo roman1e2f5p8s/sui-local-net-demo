@@ -279,6 +279,10 @@ sudo systemctl start sui-node
   ```bash
   sudo systemctl stop sui-node
   ```
+- To delete the local Sui node databases, run:
+  ```bash
+  sudo rm -rf /opt/sui/db/
+  ```
 ---
 
 ### Sources
