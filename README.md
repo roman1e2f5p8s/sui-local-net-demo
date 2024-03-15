@@ -198,7 +198,7 @@ git commit -S -m "finalize genesis"
 git push -u origin main
 ```
 
-### Run a Sui Node using `systemd`
+### Run a Sui node using `systemd`
 Follow these steps to setup a Sui node as a systemd service. See [Run a Sui Node using Systemd | MystenLabs/Sui](https://github.com/MystenLabs/sui/blob/main/nre/systemd/README.md) for detail.
 
 1. Add a `sui` user and setup the `/opt/sui` directory as follows:
