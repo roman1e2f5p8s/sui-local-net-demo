@@ -271,7 +271,7 @@ sudo systemctl start sui-node
   ```bash
   sudo systemctl status sui-node
   ```
-- The logs can be shows by running:
+- The logs can be shown by running:
   ```bash
   journalctl -u sui-node -f
   ```
