@@ -21,13 +21,14 @@ SUI_LOCAL_CONFIG_DIR=<some-directory>
 mkdir $SUI_LOCAL_CONFIG_DIR
 sui genesis -f --with-faucet --working-dir=$SUI_LOCAL_CONFIG_DIR
 ```
-This should generate the following files:
+The expected output and the list of generated files should be as follows:
 ![sui genesis](/images/sui-genesis.png)
 
 3. Clone the [Sui repo](https://github.com/MystenLabs/sui/tree/main):
 ```bash
 git clone https://github.com/MystenLabs/sui.git && cd sui
 ```
+![git clone sui](/images/clone-sui.png)
 
 4. In the root folder of the `sui` repo, install a local Sui Explorer:
 ```bash
