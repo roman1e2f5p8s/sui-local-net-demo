@@ -1,6 +1,10 @@
 # sui-local-net-demo
 [sui-local-net-demo](https://github.com/roman1e2f5p8s/sui-local-net-demo) demonstrates how to start a local [Sui](https://sui.io/) network on a physical machine.
 
+This demo was tested using:
+- Rust: `rustc 1.76.0 (07dca489a 2024-02-04)`
+- Sui:  `sui 1.21.0-473e4e256`
+
 ## Preliminary steps
 Preliminary steps include installing dependencies and generating configs.
 
@@ -9,6 +13,7 @@ Preliminary steps include installing dependencies and generating configs.
 rustup update stable
 cargo install --locked --git https://github.com/MystenLabs/sui.git --branch main sui
 ```
+![Rust and Sui version](/images/rust-sui-version.png)
 
 2. If you would like to run the local Sui network with a persisted state, generate a config to store db and genesis configs:
 ```bash
