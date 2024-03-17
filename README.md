@@ -36,7 +36,7 @@ sudo npm install -g pnpm
 pnpm install
 pnpm turbo build
 ```
-![git clone sui](/images/pnpm-install.png)
+![pnpm install](/images/pnpm-install.png)
   - If the `EHOSTUNREACH` error appears, disable IPv6, and then repeat the installation:
     ```bash
     sudo sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
@@ -47,6 +47,7 @@ pnpm turbo build
 ```bash
 pnpm explorer dev
 ```
+![run sui explorer](/images/run-sui-explorer.png)
 - If you open the local Sui Explorer at http://localhost:3000/ and it redirects to the following
   ![sui explorer redirect](/images/sui-explorer-redirect.png)
   you will need to modify the following line in `apps/explorer/src/components/Layout/PageLayout.tsx` in the root folder of the `sui` repo:
