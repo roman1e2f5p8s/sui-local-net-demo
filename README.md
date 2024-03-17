@@ -15,7 +15,7 @@ cargo install --locked --git https://github.com/MystenLabs/sui.git --branch main
 ```
 ![Rust and Sui version](/images/rust-sui-version.png)
 
-2. If you would like to run the local Sui network with a persisted state, generate a config to store db and genesis configs:
+2. If you would like to run a local Sui network with a persisted state, generate a config to store db and genesis configs:
 ```bash
 SUI_LOCAL_CONFIG_DIR=<some-directory>
 mkdir $SUI_LOCAL_CONFIG_DIR
@@ -36,15 +36,30 @@ sudo npm install -g pnpm
 pnpm install
 pnpm turbo build
 ```
-  - If the `EHOSTUNREACH` error appears, disable IPv6, and then repeat the intallation:
+![git clone sui](/images/pnpm-install.png)
+  - If the `EHOSTUNREACH` error appears, disable IPv6, and then repeat the installation:
     ```bash
     sudo sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
     ```
 
-5. Start the Sui Explorer dev server:
+5. Start the Sui Explorer dev server by running the following command in the root folder of the `sui` repo:
+
 ```bash
 pnpm explorer dev
 ```
+- If you open the local Sui Explorer at http://localhost:3000/ and it redirects to the following
+![sui explorer redirect](/images/sui-explorer-redirect.png)
+you will need to modify the following line in `apps/explorer/src/components/Layout/PageLayout.tsx` in the root folder of the `sui` repo:
+```typescript
+const enableExplorerRedirect = useFeatureIsOn('explorer-redirect');
+```
+to
+```typescript
+const enableExplorerRedirect = false; //useFeatureIsOn('explorer-redirect');
+```
+(there is no need to repeat steps 4-5 of this section after the modification is made).
+The local Sui Explorer at http://localhost:3000/ should then look as follows:
+![sui explorer 0](/images/sui-explorer-0.png)
 
 ---
 
