@@ -65,9 +65,9 @@ pnpm explorer dev
 ---
 
 ## Closing steps
-Closing steps are meant to be taken after the local Sui network is started to verify that it is running.
+Closing steps are meant to be taken after the local Sui network is started, to verify that it is running.
 
-1. Once the local network is started using one of the methods provided below, it can be verified that it is running using a simple request:
+*1. Once the local network is started using one of the methods provided below, it can be verified that it is running using a simple request:*
 ```bash
 curl --location --request POST 'http://127.0.0.1:9000' \
   --header 'Content-Type: application/json' \
@@ -79,32 +79,37 @@ curl --location --request POST 'http://127.0.0.1:9000' \
   }'
 ```
 
-2. Keeping the explorer dev server running (step 5 in [Preliminary steps](#preliminary-steps)), open the local Sui Explorer at the following URL: http://localhost:3000/.
+*2. Keeping the explorer dev server running (step 5 in [Preliminary steps](#preliminary-steps)), open the local Sui Explorer at the following URL: http://localhost:3000/.*
 
 ---
 
 ## Method 1: Use `sui-test-validator`
-Sui-provides the [sui-test-validator](https://github.com/MystenLabs/sui/tree/main/crates/sui-test-validator) binary that starts a local network that includes a Sui Full node, a Sui validator, a Sui faucet and (optionally) an indexer. This method is the simplest one and it is recommnded in the official Sui tutorial [Connect to a Local Network](https://docs.sui.io/guides/developer/getting-started/local-network).
+Sui-provides the [sui-test-validator](https://github.com/MystenLabs/sui/tree/main/crates/sui-test-validator) binary that starts a local network that includes a Sui Full node, a Sui validator, a Sui faucet and (optionally) an indexer. This method is the simplest one and it is recommended in the official Sui tutorial [Connect to a Local Network](https://docs.sui.io/guides/developer/getting-started/local-network).
 
-Nativate to the root folder of the `sui` repo (cloned in step 3 of [Preliminary steps](#preliminary-steps)) and build `sui-test-validator`:
+*1. Navigate to the root folder of the `sui` repo (cloned in step 3 of [Preliminary steps](#preliminary-steps)) and build `sui-test-validator`:*
 ```bash
 cd sui && cargo build --bin sui-test-validator
 ```
+![build test validator](/images/build-test-validator.png)
 
-Start the local network using the following sommand:
+*2. Start the local network using the following command:*
 ```bash
 RUST_LOG="off,sui_node=info" ./target/debug/sui-test-validator
 ```
+![run test validator](/images/run-test-validator.png)
 
-To start the local Sui network with a persisted state (make sure you completed step 2 of [Preliminary steps](#preliminary-steps)), use the following sommand:
+*3. To start the local Sui network with a persisted state (make sure you completed step 2 of [Preliminary steps](#preliminary-steps)), use the following command:*
 ```bash
 RUST_LOG="off,sui_node=info" \
   ./target/debug/sui-test-validator --config-dir $SUI_LOCAL_CONFIG_DIR
 ```
+![run test validator with config](/images/run-test-validator-with-config.png)
 
-In another terminal window, verify that the local network is running as described in step 1 of [Closing steps](#closing-steps).
+*4. In another terminal window, verify that the local network is running as described in step 1 of [Closing steps](#closing-steps).*
+![test validator request](/images/test-validator-request.png)
 
-On the local Sui explorer, observe that the local network is running es described in step 2 of [Closing steps](#closing-steps).
+*5. On the local Sui explorer, observe that the local network is running es described in step 2 of [Closing steps](#closing-steps).*
+![test validator explorer](/images/test-validator-explorer.png)
 
 ---
 
