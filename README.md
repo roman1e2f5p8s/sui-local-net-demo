@@ -241,7 +241,7 @@ git push -u origin main
 ### Run a Sui node using `systemd`
 Follow these steps to setup a Sui node as a systemd service. See [Run a Sui Node using Systemd | MystenLabs/Sui](https://github.com/MystenLabs/sui/blob/main/nre/systemd/README.md) for detail.
 
-1. Add a `sui` user and setup the `/opt/sui` directory as follows:
+*1. Add a `sui` user and setup the `/opt/sui` directory as follows:*
 ```bash
 sudo useradd sui
 sudo mkdir -p /opt/sui/bin
@@ -251,28 +251,30 @@ sudo mkdir -p /opt/sui/key-pairs
 sudo chown -R sui:sui /opt/sui
 ```
 
-2. Nativate to the root folder of the `sui` repo (cloned in step 3 of [Preliminary steps](#preliminary-steps)), build `sui-node`, and copy the built binary into `/opt/sui/bin/`:
+*2. Navigate to the root folder of the `sui` repo (cloned in step 3 of [Preliminary steps](#preliminary-steps)), build `sui-node`, and copy the built binary into `/opt/sui/bin/`:*
 ```bash
 cd sui && git checkout $SUI_SHA
 cargo build --release --bin sui-node
 sudo cp ./target/release/sui-node /opt/sui/bin/
 ```
+![build sui node](/images/build-sui-node.png)
 
-3. Navigate to the `sui-genesis` repo (see step 2 of [Generate `genesis.blob`](#generate-genesisblob)) and copy key-pairs generated in steps 4-7 of [Generate `genesis.blob`](#generate-genesisblob) into `/opt/sui/key-pairs/` as follows:
+*3. Navigate to the `sui-genesis-demo` repo (see step 2 of [Generate `genesis.blob`](#generate-genesisblob)) and copy key-pairs generated in steps 4-7 of [Generate `genesis.blob`](#generate-genesisblob) into `/opt/sui/key-pairs/` as follows:*
 ```bash
-cd sui-genesis
+cd sui-genesis-demo
 sudo cp val_0.key /opt/sui/key-pairs/protocol.key
 sudo cp val_0_worker.key /opt/sui/key-pairs/worker.key
 sudo cp val_0_network.key /opt/sui/key-pairs/network.key
 sudo cp val_0_account.key /opt/sui/key-pairs/account.key
 ```
+![copy key pairs](/images/copy-key-pairs.png)
 
-4. Download the node configuration file provided by Sui from [here](https://github.com/MystenLabs/sui/blob/main/nre/config/validator.yaml) and place it into the `/opt/sui/config/` directory:
+*4. Download the node configuration file provided by Sui from [here](https://github.com/MystenLabs/sui/blob/main/nre/config/validator.yaml) and place it into the `/opt/sui/config/` directory:*
 ```bash
 sudo mv validator.yaml /opt/sui/config/
 ```
 
-5. Open `/opt/sui/config/validator.yaml` and modify the following line:
+*5. Open `/opt/sui/config/validator.yaml` and modify the following line:*
 ```yaml
   external-address: /dns/$HOSTNAME/udp/8084 # UPDATE THIS
 ```
@@ -282,28 +284,29 @@ to
 ```
 and save the file.
 
-6. Navigate to the `sui-genesis` repo (see step 2 of [Generate `genesis.blob`](#generate-genesisblob)) and copy `genesis.blob` into `/opt/sui/config/`:
+*6. Navigate to the `sui-genesis-demo` repo (see step 2 of [Generate `genesis.blob`](#generate-genesisblob)) and copy `genesis.blob` into `/opt/sui/config/`:*
 ```bash
-cd sui-genesis && sudo cp genesis.blob /opt/sui/config/
+cd sui-genesis-demo && sudo cp genesis.blob /opt/sui/config/
 ```
 
-7. After copying and creating files in `/opt/sui`, make sure they retain `sui` user permissions by re-running
+*7. After copying and creating files in `/opt/sui`, make sure they retain `sui` user permissions by re-running*
 ```bash
 sudo chown -R sui:sui /opt/sui
 ```
 
-8. Download the sui-node systemd service unit file provided by Sui from [here](https://github.com/MystenLabs/sui/blob/main/nre/systemd/sui-node.service) and place it into the `/etc/systemd/system/` directory:
+*8. Download the sui-node systemd service unit file provided by Sui from [here](https://github.com/MystenLabs/sui/blob/main/nre/systemd/sui-node.service) and place it into the `/etc/systemd/system/` directory:*
 ```bash
 sudo mv sui-node.service /etc/systemd/system/
 ```
 
-9. Reload systemd and enable this new service unit file:
+*9. Reload systemd and enable this new service unit file:*
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable sui-node.service
 ```
+![enable sui node service](/images/enable-sui-node-service.png)
 
-10. Start the validator node:
+*10. Start the validator node:*
 ```bash
 sudo systemctl start sui-node
 ```
@@ -311,18 +314,23 @@ sudo systemctl start sui-node
   ```bash
   sudo systemctl status sui-node
   ```
+  ![sui node running](/images/sui-node-running.png)
 - The logs can be shown by running:
   ```bash
   journalctl -u sui-node -f
   ```
+  ![sui node logs](/images/sui-node-logs.png)
 - To stop sui-node systemd service, run:
   ```bash
   sudo systemctl stop sui-node
   ```
+  ![sui node stop](/images/sui-node-stop.png)
 - To delete the local Sui node databases, run:
   ```bash
   sudo rm -rf /opt/sui/db/*
   ```
+  ![sui node disable](/images/sui-node-disable.png)
+
 ---
 
 ### Sources
