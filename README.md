@@ -8,14 +8,14 @@ This demo was tested using:
 ## Preliminary steps
 Preliminary steps include installing dependencies and generating configs.
 
-1. Update Rust and update/install Sui as described in [Sui Docs](https://docs.sui.io/guides/developer/getting-started/sui-install):
+*1. Update Rust and update/install Sui as described in [Sui Docs](https://docs.sui.io/guides/developer/getting-started/sui-install):*
 ```bash
 rustup update stable
 cargo install --locked --git https://github.com/MystenLabs/sui.git --branch main sui
 ```
 ![Rust and Sui version](/images/rust-sui-version.png)
 
-2. If you would like to run a local Sui network with a persisted state, generate a config to store db and genesis configs:
+*2. If you would like to run a local Sui network with a persisted state, generate a config to store db and genesis configs:*
 ```bash
 SUI_LOCAL_CONFIG_DIR=<some-directory>
 mkdir $SUI_LOCAL_CONFIG_DIR
@@ -24,13 +24,13 @@ sui genesis -f --with-faucet --working-dir=$SUI_LOCAL_CONFIG_DIR
 The expected output and the list of generated files should be as follows:
 ![sui genesis](/images/sui-genesis.png)
 
-3. Clone the [Sui repo](https://github.com/MystenLabs/sui/tree/main):
+*3. Clone the [Sui repo](https://github.com/MystenLabs/sui/tree/main):*
 ```bash
 git clone https://github.com/MystenLabs/sui.git && cd sui
 ```
 ![git clone sui](/images/clone-sui.png)
 
-4. In the root folder of the `sui` repo, install a local Sui Explorer:
+*4. In the root folder of the `sui` repo, install a local Sui Explorer:*
 ```bash
 sudo npm install -g pnpm
 pnpm install
@@ -42,24 +42,24 @@ pnpm turbo build
     sudo sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
     ```
 
-5. Start the Sui Explorer dev server by running the following command in the root folder of the `sui` repo:
+*5. Start the Sui Explorer dev server by running the following command in the root folder of the `sui` repo:*
 
 ```bash
 pnpm explorer dev
 ```
 - If you open the local Sui Explorer at http://localhost:3000/ and it redirects to the following
-![sui explorer redirect](/images/sui-explorer-redirect.png)
-you will need to modify the following line in `apps/explorer/src/components/Layout/PageLayout.tsx` in the root folder of the `sui` repo:
-```typescript
-const enableExplorerRedirect = useFeatureIsOn('explorer-redirect');
-```
-to
-```typescript
-const enableExplorerRedirect = false; //useFeatureIsOn('explorer-redirect');
-```
-(there is no need to repeat steps 4-5 of this section after the modification is made).
-The local Sui Explorer at http://localhost:3000/ should then look as follows:
-![sui explorer 0](/images/sui-explorer-0.png)
+  ![sui explorer redirect](/images/sui-explorer-redirect.png)
+  you will need to modify the following line in `apps/explorer/src/components/Layout/PageLayout.tsx` in the root folder of the `sui` repo:
+  ```typescript
+  const enableExplorerRedirect = useFeatureIsOn('explorer-redirect');
+  ```
+  to
+  ```typescript
+  const enableExplorerRedirect = false; //useFeatureIsOn('explorer-redirect');
+  ```
+  (there is no need to repeat steps 4-5 of this section after the modification is made).
+  The local Sui Explorer at http://localhost:3000/ should then look as follows:
+  ![sui explorer 0](/images/sui-explorer-0.png)
 
 ---
 
