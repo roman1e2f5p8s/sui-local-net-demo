@@ -116,17 +116,20 @@ RUST_LOG="off,sui_node=info" \
 ## Method 2: Use `sui start`
 `sui start` starts a local Sui network by running pre-generated genesis configs.
 
-Make sure you completed step 2 of [Preliminary steps](#preliminary-steps) as it is required to generate genesis configs in this method.
+*1. Make sure you completed step 2 of [Preliminary steps](#preliminary-steps) as it is required to generate genesis configs in this method.*
 
-Start the local Sui network using the following command:
+*2. Start the local Sui network using the following command:*
 ```bash
 RUST_LOG="off,sui_node=info" \
   sui start --network.config=$SUI_LOCAL_CONFIG_DIR/network.yaml
 ```
+![run sui start](/images/run-sui-start.png)
 
-In another terminal window, verify that the local network is running as described in step 1 of [Closing steps](#closing-steps).
+*3. In another terminal window, verify that the local network is running as described in step 1 of [Closing steps](#closing-steps).*
+![sui start request](/images/sui-start-request.png)
 
-On the local Sui explorer, observe that the local network is running es described in step 2 of [Closing steps](#closing-steps).
+*4. On the local Sui explorer, observe that the local network is running es described in step 2 of [Closing steps](#closing-steps).*
+![sui start explorer](/images/sui-start-explorer.png)
 
 ---
 
