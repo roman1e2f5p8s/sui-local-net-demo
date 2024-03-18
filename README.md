@@ -1,9 +1,10 @@
 # sui-local-net-demo
 [sui-local-net-demo](https://github.com/roman1e2f5p8s/sui-local-net-demo) demonstrates how to start a local [Sui](https://sui.io/) network and run a Sui validator node using `sui genesis-ceremony` and `sui-node` on a local machine.
 
-This demo was tested using:
-- Rust: `rustc 1.76.0 (07dca489a 2024-02-04)`
-- Sui:  `sui 1.21.0-473e4e256`
+> [!NOTE]
+> This demo was tested using:
+> - Rust: `rustc 1.76.0 (07dca489a 2024-02-04)`
+> - Sui:  `sui 1.21.0-473e4e256`
 
 ## Preliminary steps
 Preliminary steps include installing dependencies and generating configs.
@@ -138,8 +139,10 @@ RUST_LOG="off,sui_node=info" \
 ### Generate `genesis.blob`
 [sui genesis-ceremony](https://github.com/MystenLabs/sui/blob/main/crates/sui/genesis.md) orchestrates a Sui Genesis Ceremony.
 
-Steps 1-3, 10 should be performed only by the master of ceremony.
-Steps 2, 4-9, 11 should be performed by each participating validator.
+> [!IMPORTANT]
+> Steps 1-3, 10 should be performed only by the master of ceremony.
+> 
+> Steps 2, 4-9, 11 should be performed by each participating validator.
 
 *1. Create a new empty [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository) repo. Assume it is named `sui-genesis-demo`.*
 <!-- ![create sui genesis demo](/images/create-sui-genesis-demo.png) -->
@@ -237,6 +240,8 @@ git commit -S -m "finalize genesis"
 git push -u origin main
 ```
 ![finalize genesis](/images/finalize-genesis.png)
+
+For this demonstration, we used the [sui-genesis-demo](https://github.com/roman1e2f5p8s/sui-genesis-demo) repo, where you can find all files generated during the ceremony.
 
 ### Run a Sui node using `systemd`
 Follow these steps to setup a Sui node as a systemd service. See [Run a Sui Node using Systemd | MystenLabs/Sui](https://github.com/MystenLabs/sui/blob/main/nre/systemd/README.md) for detail.
