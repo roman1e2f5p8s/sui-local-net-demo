@@ -1,6 +1,9 @@
 # sui-local-net-demo
 [sui-local-net-demo](https://github.com/roman1e2f5p8s/sui-local-net-demo) demonstrates how to start a local [Sui](https://sui.io/) network and run a Sui validator node using `sui genesis-ceremony` and `sui-node` on a local machine.
 
+> [!IMPORTANT]
+> This repo is intended to serve for informational purposes only.
+
 > [!NOTE]
 > This demo was tested using:
 > - Rust: `rustc 1.76.0 (07dca489a 2024-02-04)`
