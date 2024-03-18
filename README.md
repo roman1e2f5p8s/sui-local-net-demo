@@ -13,7 +13,7 @@ Preliminary steps include installing dependencies and generating configs.
 rustup update stable
 cargo install --locked --git https://github.com/MystenLabs/sui.git --branch main sui
 ```
-![Rust and Sui version](/images/rust-sui-version.png)
+<!-- ![Rust and Sui version](/images/rust-sui-version.png) -->
 
 *2. If you would like to run a local Sui network with a persisted state, generate a config to store db and genesis configs:*
 ```bash
@@ -21,14 +21,14 @@ SUI_LOCAL_CONFIG_DIR=<some-directory>
 mkdir $SUI_LOCAL_CONFIG_DIR
 sui genesis -f --with-faucet --working-dir=$SUI_LOCAL_CONFIG_DIR
 ```
-The expected output and the list of generated files should be as follows:
-![sui genesis](/images/sui-genesis.png)
+<!-- The expected output and the list of generated files should be as follows: -->
+<!-- ![sui genesis](/images/sui-genesis.png) -->
 
 *3. Clone the [Sui repo](https://github.com/MystenLabs/sui/tree/main):*
 ```bash
 git clone https://github.com/MystenLabs/sui.git && cd sui
 ```
-![git clone sui](/images/clone-sui.png)
+<!-- ![git clone sui](/images/clone-sui.png) -->
 
 *4. In the root folder of the `sui` repo, install a local Sui Explorer:*
 ```bash
@@ -36,7 +36,7 @@ sudo npm install -g pnpm
 pnpm install
 pnpm turbo build
 ```
-![pnpm install](/images/pnpm-install.png)
+<!-- ![pnpm install](/images/pnpm-install.png) -->
   - If the `EHOSTUNREACH` error appears, disable IPv6, and then repeat the installation:
     ```bash
     sudo sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
@@ -90,7 +90,7 @@ Sui-provides the [sui-test-validator](https://github.com/MystenLabs/sui/tree/mai
 ```bash
 cd sui && cargo build --bin sui-test-validator
 ```
-![build test validator](/images/build-test-validator.png)
+<!-- ![build test validator](/images/build-test-validator.png) -->
 
 *2. Start the local network using the following command:*
 ```bash
@@ -142,13 +142,13 @@ Steps 1-3, 10 should be performed only by the master of ceremony.
 Steps 2, 4-9, 11 should be performed by each participating validator.
 
 *1. Create a new empty [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository) repo. Assume it is named `sui-genesis-demo`.*
-![create sui genesis demo](/images/create-sui-genesis-demo.png)
+<!-- ![create sui genesis demo](/images/create-sui-genesis-demo.png) -->
 
 *2. Clone the repo on a local machine and navigate to its root folder:*
 ```bash
 git clone https://github.com/<owner>/sui-genesis-demo.git && cd sui-genesis-demo
 ```
-![clone sui genesis demo](/images/clone-sui-genesis-demo.png)
+<!-- ![clone sui genesis demo](/images/clone-sui-genesis-demo.png) -->
 
 *3. Initialize a Sui genesis ceremony and push the changes to the repo:*
 ```bash
@@ -257,7 +257,7 @@ cd sui && git checkout $SUI_SHA
 cargo build --release --bin sui-node
 sudo cp ./target/release/sui-node /opt/sui/bin/
 ```
-![build sui node](/images/build-sui-node.png)
+<!-- ![build sui node](/images/build-sui-node.png) -->
 
 *3. Navigate to the `sui-genesis-demo` repo (see step 2 of [Generate `genesis.blob`](#generate-genesisblob)) and copy key-pairs generated in steps 4-7 of [Generate `genesis.blob`](#generate-genesisblob) into `/opt/sui/key-pairs/` as follows:*
 ```bash
@@ -267,7 +267,7 @@ sudo cp val_0_worker.key /opt/sui/key-pairs/worker.key
 sudo cp val_0_network.key /opt/sui/key-pairs/network.key
 sudo cp val_0_account.key /opt/sui/key-pairs/account.key
 ```
-![copy key pairs](/images/copy-key-pairs.png)
+<!-- ![copy key pairs](/images/copy-key-pairs.png) -->
 
 *4. Download the node configuration file provided by Sui from [here](https://github.com/MystenLabs/sui/blob/main/nre/config/validator.yaml) and place it into the `/opt/sui/config/` directory:*
 ```bash
@@ -304,7 +304,7 @@ sudo mv sui-node.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable sui-node.service
 ```
-![enable sui node service](/images/enable-sui-node-service.png)
+<!-- ![enable sui node service](/images/enable-sui-node-service.png) -->
 
 *10. Start the validator node:*
 ```bash
@@ -319,17 +319,17 @@ sudo systemctl start sui-node
   ```bash
   journalctl -u sui-node -f
   ```
-  ![sui node logs](/images/sui-node-logs.png)
+  <!-- ![sui node logs](/images/sui-node-logs.png) -->
 - To stop sui-node systemd service, run:
   ```bash
   sudo systemctl stop sui-node
   ```
-  ![sui node stop](/images/sui-node-stop.png)
+  <!-- ![sui node stop](/images/sui-node-stop.png) -->
 - To delete the local Sui node databases, run:
   ```bash
   sudo rm -rf /opt/sui/db/*
   ```
-  ![sui node disable](/images/sui-node-disable.png)
+  <!-- ![sui node disable](/images/sui-node-disable.png) -->
 
 ---
 
