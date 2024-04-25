@@ -1,5 +1,7 @@
 # sui-local-net-demo
-[sui-local-net-demo](https://github.com/roman1e2f5p8s/sui-local-net-demo) demonstrates how to start a local [Sui](https://sui.io/) network and run a Sui validator node using `sui genesis-ceremony` and `sui-node` on a local machine.
+[sui-local-net-demo](https://github.com/roman1e2f5p8s/sui-local-net-demo) demonstrates how to:
+1. start a local [Sui](https://sui.io/) network using `sui-test-validator` and `sui start`, and
+2. generate a genesis file using `sui genesis-ceremony` and run a Sui validator node using `sui-node` on a local machine.
 
 > [!IMPORTANT]
 > This repo is intended to serve for informational purposes only.
